@@ -1,0 +1,6 @@
+Items,Quantity Produced per Hour,Hours Worked,Total (per item),Total (all items)
+Bags,30,8,240,240
+Shirts,50,8,400,640
+Trousers,50,8,400,1040
+Shoes,20,8,160,1200
+Jackets,70,8,560,1760
