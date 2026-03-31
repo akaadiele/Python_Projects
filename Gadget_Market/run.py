@@ -3,7 +3,7 @@
 # Run the Flask Application
 
 # Importing Modules
-from market import app    # Import the Flask application instance from the market package
+from gadget_market import app    # Import the Flask application instance from the gadget_market package
 
 # ------------------------------------------------------------------------------
 # Check if the run.py file is being executed directly and not imported as a module

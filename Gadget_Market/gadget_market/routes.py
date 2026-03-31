@@ -5,11 +5,11 @@
 
 # ------------------------------------------------------------------------------
 # Import necessary modules and components
-from market import app, db  # Import the Flask application instance and the database instance from the market package
+from gadget_market import app, db  # Import the Flask application instance and the database instance from the gadget_market package
 
-from market.models import Item, User  # Import the Item, User model from the market package
-from market.forms import RegisterForm, LoginForm  # Import the forms from the market package 
-from market.forms import PurchaseItemForm, SellItemForm  # Import the purchase and sell item forms from the market package
+from gadget_market.models import Item, User  # Import the Item, User model from the gadget_market package
+from gadget_market.forms import RegisterForm, LoginForm  # Import the forms from the gadget_market package 
+from gadget_market.forms import PurchaseItemForm, SellItemForm  # Import the purchase and sell item forms from the gadget_market package
 
 from flask import render_template, redirect, url_for, request  # Import the render_template, redirect, url_for, and request functions for rendering HTML templates and handling redirects
 from flask import flash  # Import the flash function for displaying flash messages to users
@@ -23,7 +23,7 @@ from flask_login import current_user  # Import the current_user proxy from the f
 @app.route("/")     # Define the route for the root URL
 @app.route("/home")     # Define another route for the /home URL
 def home_page():      # Define the function to be executed when the root URL is accessed
-    return render_template("home.html")       # Render and return the 'home.html' template
+    return render_template("home_page.html")       # Render and return the 'home.html' template
 
 # ------------------------------------------------------------------------------
 # Market page route
@@ -67,7 +67,7 @@ def market_page():      # Define the function to be executed when the /market UR
         # Current user's items
         owned_items = Item.query.filter_by(owner=current_user.id)  # Retrieve all items owned by the current user from the database
 
-        return render_template("market.html", items=items, purchaseForm=purchaseForm, owned_items=owned_items, sellForm=sellForm)
+        return render_template("gadget_market_page.html", items=items, purchaseForm=purchaseForm, owned_items=owned_items, sellForm=sellForm)
         # Render and return the 'market.html' template
 
 # ------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ def register_page():    # Define the function to be executed when the /register 
         for err_msg in form.errors.values():  # Iterate through the error messages in the form errors
             flash(f"There was an error with creating a user: {err_msg}", category='danger')  # Flash the error message to be displayed to the user (e.g., using Flask's flash function)
 
-    return render_template("register.html", form=form)     # Render and return the 'register.html' template, passing the form instance to the template for rendering the form fields
+    return render_template("registration_page.html", form=form)     # Render and return the 'register.html' template, passing the form instance to the template for rendering the form fields
 
 # ------------------------------------------------------------------------------
 # Login page route
@@ -117,7 +117,7 @@ def login_page():
         else:
             flash(f"Invalid Username, Please try again.", category='danger')  # Flash the error message to be displayed to the user (e.g., using Flask's flash function)
         
-    return render_template("login.html", form=form)
+    return render_template("login_page.html", form=form)
 
 # ------------------------------------------------------------------------------
 @app.route('/logout')

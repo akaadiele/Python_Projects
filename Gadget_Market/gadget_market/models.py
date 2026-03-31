@@ -5,9 +5,9 @@
 
 # ------------------------------------------------------------------------------
 # Import necessary modules and components
-from market import db  # Import the SQLAlchemy database instance from the market package
-from market import bcrypt  # Import the Bcrypt instance from the market package
-from market import login_manager  # Import the LoginManager instance from the market package
+from gadget_market import db  # Import the SQLAlchemy database instance from the gadget_market package
+from gadget_market import bcrypt  # Import the Bcrypt instance from the gadget_market package
+from gadget_market import login_manager  # Import the LoginManager instance from the gadget_market package
 
 from flask_login import UserMixin  # Import the UserMixin class from the flask_login module for user authentication and session management
 

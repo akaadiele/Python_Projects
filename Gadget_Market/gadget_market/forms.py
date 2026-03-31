@@ -10,7 +10,7 @@ from flask_wtf import FlaskForm  # Import the FlaskForm class from the flask_wtf
 from wtforms import StringField, PasswordField, SubmitField  # Import form field types from wtforms
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError  # Import validators from wtforms
 
-from market.models import User  # Import the User model from the market package
+from gadget_market.models import User  # Import the User model from the gadget_market package
 
 # ------------------------------------------------------------------------------
 # Register Form

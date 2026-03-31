@@ -15,7 +15,7 @@ from flask_login import LoginManager   # Import LoginManager for user session ma
 
 # Flask application
 app = Flask(__name__)       # Create a Flask web server instance / Initialize the Flask application
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'   # Configure the database URI
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///gadget_market.db'   # Configure the database URI
 app.config['SECRET_KEY'] =  '8db3ad2f798ef921ed627511'  # Set a secret key for the application (used for forms, session management and other security features)
 
 # Database
@@ -31,6 +31,6 @@ login_manager.login_message_category = 'info'  # Set the category for the flash 
 
 # ------------------------------------------------------------------------------
 # Import routes
-from market import routes    # Import the routes module from the market package
+from gadget_market import routes    # Import the routes module from the 'gadget_market' package
 
 # ------------------------------------------------------------------------------
