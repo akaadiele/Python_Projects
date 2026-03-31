@@ -1,0 +1,65 @@
+<!-- Item More Info Modal -->
+<div class="modal fade" id="SellModal-MoreInfo-{{ owned_item.id }}" tabindex="-1" aria-labelledby="sellMoreInfoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="sellMoreInfoModalLabel">
+                    {{ owned_item.name }}
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                {{ owned_item.description }}
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Item Sell Modal -->
+<div class="modal fade" id="Modal-Sell-{{ owned_item.id }}" tabindex="-1" aria-labelledby="sellModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="sellModalLabel">
+                    {{ owned_item.name }}
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <h4 class="text-center">
+                    Confirm sale of {{ owned_item.name }} for £{{ owned_item.price }}?
+                </h4>
+                <h6 class="text-center fst-italic fw-lighter">(Click "Sell" to confirm.)</h6>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                
+                <form method="POST">
+                    {{ sellForm.hidden_tag() }}
+
+                    <!-- Hidden input field to store the item ID for processing the sale -->
+                    <input type="hidden" name="item_id" id="item_id" value="{{ owned_item.id }}">
+
+                    <!-- Hidden input field to store the item name for processing the sale -->
+                    <input type="hidden" name="sold_item" id="sold_item" value="{{ owned_item.name }}">
+
+                    {{ sellForm.submit(class="btn btn-danger") }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

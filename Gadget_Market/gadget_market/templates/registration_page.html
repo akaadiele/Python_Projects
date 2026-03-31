@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Register Page{% endblock %}
+
+{% block register_current %}<span class="visually-hidden">(current)</span>{% endblock %}
+
+{% block register_active %}active{% endblock %}
+
+{% block content %}
+
+<div class="container text-center justify-content-center my-5" style="max-width: 600px;">
+    <form method="POST" class="row g-3 justify-content-center" style="color: white;">
+        {{ form.hidden_tag() }} <!-- Include the hidden CSRF token field for security -->
+
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Market Logo" class="img-fluid mb-4"
+            style="max-width: 150px;">
+
+        <h1 class="h2 mb-3">Create Your Account</h1>
+
+        <div class="col-md-6">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control", placeholder="Username", autocomplete="username") }}
+        </div>
+        <div class="col-md-6">
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control", placeholder="Email", autocomplete="email") }}
+        </div>
+        <div class="col-md-6">
+            {{ form.password1.label(class="form-label") }}
+            {{ form.password1(class="form-control", placeholder="Password", autocomplete="new-password") }}
+        </div>
+        <div class="col-md-6">
+            {{ form.password2.label(class="form-label") }}
+            {{ form.password2(class="form-control", placeholder="Re-type Password", autocomplete="new-password") }}
+        </div>
+        <div class="col-md-6 d-grid">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+
+        <br>
+        <div>
+            <p>Already have an account? <a href="{{ url_for('login_page') }}" class="link-light link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover">Login here.</a></p>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

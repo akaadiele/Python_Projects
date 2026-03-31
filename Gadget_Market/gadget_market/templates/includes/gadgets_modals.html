@@ -1,0 +1,108 @@
+<!-- Item More Info Modal -->
+<div class="modal fade" id="Modal-MoreInfo-{{ item.id }}" tabindex="-1" aria-labelledby="moreInfoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="moreInfoModalLabel">
+                    {{ item.name }}
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                {{ item.description }}
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Item Purchase Modal -->
+<div class="modal fade" id="Modal-Purchase-{{ item.id }}" tabindex="-1" aria-labelledby="purchaseModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="purchaseModalLabel">
+                    {{ item.name }}
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <h4 class="text-center">
+                    Confirm purchase of {{ item.name }} for £{{ item.price }}?
+                </h4>
+                <h6 class="text-center fst-italic fw-lighter">(Click "Purchase" to confirm.)</h6>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                
+                <form method="POST">
+                    {{ purchaseForm.hidden_tag() }}
+
+                    <!-- Hidden input field to store the item ID for processing the purchase -->
+                    <input type="hidden" name="item_id" id="item_id" value="{{ item.id }}">
+
+                    <!-- Hidden input field to store the item name for processing the purchase -->
+                    <input type="hidden" name="purchased_item" id="purchased_item" value="{{ item.name }}">
+
+                    {{ purchaseForm.submit(class="btn btn-success") }}
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Item Sell Modal -->
+<div class="modal fade" id="Modal-Sell-{{ item.id }}" tabindex="-1" aria-labelledby="sellModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="sellModalLabel">
+                    {{ item.name }}
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <h4 class="text-center">
+                    Confirm sale of {{ item.name }} for £{{ item.price }}?
+                </h4>
+                <h6 class="text-center fst-italic fw-lighter">(Click "Sell" to confirm.)</h6>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                
+                <form method="POST">
+                    {{ sellForm.hidden_tag() }}
+
+                    <!-- Hidden input field to store the item ID for processing the sale -->
+                    <input type="hidden" name="item_id" id="item_id" value="{{ item.id }}">
+
+                    <!-- Hidden input field to store the item name for processing the sale -->
+                    <input type="hidden" name="sold_item" id="sold_item" value="{{ item.name }}">
+
+                    {{ sellForm.submit(class="btn btn-danger") }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

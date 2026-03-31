@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Login Page{% endblock %}
+
+{% block login_current %}<span class="visually-hidden">(current)</span>{% endblock %}
+
+{% block login_active %}active{% endblock %}
+
+{% block content %}
+<div class="container text-center justify-content-center my-5" style="max-width: 600px;">
+    <form method="POST" class="row g-3 justify-content-center" style="color: white;">
+        {{ form.hidden_tag() }} <!-- Include the hidden CSRF token field for security -->
+
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Market Logo" class="img-fluid mb-4"
+            style="max-width: 150px;">
+
+        <h1 class="h2 mb-3">Login</h1>
+
+        <div class="">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control", placeholder="Username", autocomplete="username") }}
+        </div>
+        <div class="">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control", placeholder="Password", autocomplete="new-password") }}
+        </div>
+
+        <br>
+        <div class="d-grid">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+        <div>
+            <p>Don't have an account? <a href="{{ url_for('register_page') }}"
+                    class="link-light link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover">Register
+                    here.</a>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock %}
